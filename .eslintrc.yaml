@@ -1,0 +1,38 @@
+settings:
+  import/resolver:
+    node:
+      extensions: [".ts", '.js']
+
+env:
+  node: true
+  browser: true
+  es2021: true
+
+extends:
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+
+plugins:
+  - "@typescript-eslint"
+  - prettier
+
+rules: 
+  "@typescript-eslint/no-non-null-assertion": off
+  "@typescript-eslint/no-explicit-any": ["error", {"ignoreRestArgs": true}]
+  no-unused-vars: off
+  "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  prettier/prettier: error
+  no-console: warn
+  require-atomic-updates: warn
+  class-methods-use-this: warn
+  no-caller: warn
+  no-empty-function: warn
+  "@typescript-eslint/ban-ts-comment": off
