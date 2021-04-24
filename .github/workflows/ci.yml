@@ -63,6 +63,7 @@ jobs:
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
+        parallel: true
         flag-name: "src"
         github-token: ${{ secrets.GITHUB_TOKEN }}
   
