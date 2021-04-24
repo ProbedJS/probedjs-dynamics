@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { dynamic, transform, isDynamic } from '../src';
+import { dynamic, isDynamic } from '../src';
 import { cleanup } from './common';
 
 afterEach(() => {
@@ -133,21 +133,5 @@ describe('Dynamic Value', () => {
         const y = x + 12;
 
         expect(y).toBe(24);
-    });
-});
-
-describe('Dependant value', () => {
-    it('recognizes values', () => {
-        const y: number = transform(12, (x) => x + x);
-        expect(y).toBe(24);
-    });
-
-    it('recognizes dynamics', () => {
-        const v = dynamic(12);
-        const y = transform(v, (x) => x + x);
-        expect(y.current).toBe(24);
-
-        v.set(13);
-        expect(y.current).toBe(26);
     });
 });

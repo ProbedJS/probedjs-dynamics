@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { dynamic, listen, valType } from '../src';
+import { dynamic, listen, valType, transform } from '../src';
 import { cleanup } from './common';
 
 afterEach(() => {
@@ -54,5 +54,21 @@ describe('valType', () => {
     it('Works on dynamic values', () => {
         const v = dynamic(0);
         expect(valType(v)).toBe('number');
+    });
+});
+
+describe('transform', () => {
+    it('Works on regular values', () => {
+        const y: number = transform((x) => x + x, 12);
+        expect(y).toBe(24);
+    });
+
+    it('Works on dynamic values', () => {
+        const v = dynamic(12);
+        const y = transform((x) => x + x, v);
+        expect(y.current).toBe(24);
+
+        v.set(13);
+        expect(y.current).toBe(26);
     });
 });
