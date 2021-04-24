@@ -146,11 +146,13 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         parallel: true
+        path-to-lcov: './test-dist/coverage/lcov.info'
         flag-name: dist-${{ matrix.node-version }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
       
 
   finalize:
+    if: always()
     needs: dist-test
     runs-on: ubuntu-latest
     steps:
