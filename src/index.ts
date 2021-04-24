@@ -16,7 +16,3 @@
 
 export { listen, transform, valType, dynamic, isDynamic } from './Operations';
 export { setContextualCleanupHandler } from './Base';
-
-import { dynamic } from './Operations';
-
-export default dynamic;

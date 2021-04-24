@@ -73,11 +73,14 @@ export declare function dynamic<T>(init: T): DynamicValue<T>;
 export declare function listen<T>(v: Reader<T>, cb: (v: T) => void): void;
 
 /** Creates a value, static or dynamic, that tracks the arguments. */
-export declare function transform<T, U>(v: DynamicReaderBase<T>, cb: (v: T) => U): DynamicReader<U>;
-export declare function transform<T, U>(v: T, cb: (v: T) => U): U;
+export declare function transform<T, U>(cb: (v: T) => U, v: DynamicReaderBase<T>): DynamicReader<U>;
+export declare function transform<T, U>(cb: (v: T) => U, v: T): U;
 
 /** Returns the result of JavaScript's typeof for the underlying value. */
 export declare function valType<T>(v: Reader<T>): string;
+
+/** Registers a callback that will be invoked whenever a listener is attached to a dynamic. */
+export declare function setContextualCleanupHandler(handler: (op: () => void) => void): void;
 
 // ***************** Utility / not user-facing ***************** //
 

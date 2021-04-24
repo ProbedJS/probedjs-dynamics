@@ -56,13 +56,14 @@ jobs:
     - name: Unit tests
       env:
         TEST: FULL
-        COVERAGE: 1
+        COVERAGE: ON
       run: pnpm run test:full
 
     # Save results    
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
+        flag-name: "src"
         github-token: ${{ secrets.GITHUB_TOKEN }}
   
   build:
@@ -127,14 +128,35 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: dist
-        path: ./dist
+        path: ./test-dist/dist
         
     - name: Install build
       working-directory: ./test-dist
-      run: npm install && npm install ../dist
+      run: npm install
 
     - name: Test
       working-directory: ./test-dist
+      env:
+        TEST: FULL
+        COVERAGE: ON
       run: npm test
+
+    # Save results    
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        parallel: true
+        flag-name: dist-${{ matrix.node-version }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       
 
+  finalize:
+    needs: dist-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          parallel-finished: true
+          flag-name: "src"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
