@@ -1,0 +1,17 @@
+{
+  "name": "@probed/dynamics",
+  "description": "Simple values that notifies when they are changed.",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "cjs/probe-dynamics.js",
+  "module": "esm/probe-dynamics.js",
+  "unpkg": "umd/probe-dynamics.es6.js",
+  "author": {
+    "name": "Francois Chabot",
+    "url": "https://https://github.com/FrancoisChabot"
+  },
+  "license": "Apache-2.0",
+  "mangle": {
+    "regex": "^_"
+  }
+}
