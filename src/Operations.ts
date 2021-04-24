@@ -25,9 +25,9 @@ export function listen<T>(v: T | DynamicReaderBase<T>, cb: (v: T) => void): void
     }
 }
 
-export function transform<T, U>(v: DynamicReaderBase<T>, cb: (v: T) => U): DynamicReader<U>;
-export function transform<T, U>(v: T, cb: (v: T) => U): U;
-export function transform<T, U>(v: T | DynamicReaderBase<T>, cb: (v: T) => U): Reader<U> {
+export function transform<T, U>(cb: (v: T) => U, v: DynamicReaderBase<T>): DynamicReader<U>;
+export function transform<T, U>(cb: (v: T) => U, v: T): U;
+export function transform<T, U>(cb: (v: T) => U, v: T | DynamicReaderBase<T>): Reader<U> {
     if (isDynamic(v)) {
         const result = dynamic(cb(v.current));
 

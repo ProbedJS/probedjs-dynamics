@@ -5,9 +5,10 @@ const config = {
         '^.+\\.ts?$': 'ts-jest',
     },
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)?$',
+    testPathIgnorePatterns: ['/test-dist'],
     moduleFileExtensions: ['js', 'ts'],
-    coveragePathIgnorePatterns: ['/node_modules/', 'src/internalValidation.ts'],
-    collectCoverage: !!process.env.COVERAGE,
+    coveragePathIgnorePatterns: ['/node_modules/'],
+    collectCoverage: process.env.COVERAGE === 'ON',
     coverageDirectory: './coverage',
     coverageThreshold: {
         global: {

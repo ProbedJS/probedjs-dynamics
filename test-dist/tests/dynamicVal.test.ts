@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { dynamic, isDynamic } from '../src';
+import { dynamic, isDynamic } from '@probed/dynamics';
 import { cleanup } from './common';
 
 afterEach(() => {

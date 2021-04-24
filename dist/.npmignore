@@ -1,0 +1,4 @@
+
+*.spec.*
+version.txt
+.npmrc

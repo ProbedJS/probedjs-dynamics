@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { dynamic, listen, valType, transform } from '../src';
+import { dynamic, listen, valType, transform } from '@probed/dynamics';
 import { cleanup } from './common';
 
 afterEach(() => {

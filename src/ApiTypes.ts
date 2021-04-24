@@ -63,4 +63,3 @@ export interface DynamicList<T extends Array<unknown>> extends DynamicBase<T> {
 
 export type DynamicReader<T> = DynamicListReader<T extends Array<unknown> ? T : never> | DynamicValueReader<T>;
 export type ListValueType<ArrayType extends Array<unknown>> = ArrayType[number];
-
